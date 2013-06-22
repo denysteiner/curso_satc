@@ -1,35 +1,10 @@
 package aula3;
 
-class carro {
-    private String nome;
-    private String cor;
-    
-    public void setNome(String p_nome){
-        nome = p_nome;
-    }
-    public String getNome(){
-        return nome;
-    }
-
-    public void setCor(String p_cor){
-        cor = p_cor;
-    }
-    public String getCor(){
-        return cor;
-    }
-
-    void acelerar() {
-       System.out.println("Acelerando "+nome);
-    }
-    void parar() {
-       System.out.println("Parando "+nome);
-    }
-}
 /* ESTUDAE REGEX*/
 public class aula1 {
    public static void main (String[] args){
-      carro lancer = new carro();
-      carro filder = new carro();
+      Carro lancer = new Carro();
+      Carro filder = new Carro();
       lancer.setNome("Lancer");
       lancer.setCor("Azul");
       filder.setNome("Filder");
@@ -41,10 +16,16 @@ public class aula1 {
       System.out.println("Carro:"+lancer.getNome()+" Cor:"+lancer.getCor());
       System.out.println("Carro:"+filder.getNome()+" Cor:"+filder.getCor());
       
-              
-              
-              
-              
+      Carro.lavar(lancer);
+      
+      
+      double num1 = 9999;
+      int num2 = (int)num1;
+      
+      System.out.println(filder instanceof Carro);
+      //System.out.println(filder instanceof lancer);
+      
       
    } 
 }
+
