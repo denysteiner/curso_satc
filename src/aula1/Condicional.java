@@ -1,3 +1,5 @@
+package aula1;
+
 public class Condicional{
 	public static void main(String[] args){
 		String status = "";

@@ -1,3 +1,5 @@
+package aula1;
+
 import javax.swing.JOptionPane;
 
 public class TesteJOptionPane{

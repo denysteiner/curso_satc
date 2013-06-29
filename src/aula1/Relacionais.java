@@ -1,3 +1,5 @@
+package aula1;
+
 public class Relacionais{
 	public static void main( String[] args ) {
 		int i = 0;

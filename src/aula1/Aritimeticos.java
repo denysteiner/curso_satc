@@ -1,3 +1,5 @@
+package aula1;
+
 public class Aritimeticos{
 
 	public static void main(String[] args){
