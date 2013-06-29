@@ -1,13 +1,25 @@
 package banco;
 
+import java.text.DecimalFormat;
+
 public class Data {
-    Integer dia, mes, ano;
-    public void setData(Integer p_dia, Integer p_mes, Integer p_ano){
-        dia = p_dia;
-        mes = p_mes;
-        ano = p_ano;
+    private Integer dia, mes, ano;
+    public void setData(Integer dia, Integer mes, Integer ano){
+        this.dia = dia;
+        this.mes = mes;
+        this.ano = ano;
     }
     public String mostraData(){
-        return dia+"/"+mes+"/"+ano;
+        DecimalFormat dfzero = new DecimalFormat("00");
+        return dfzero.format(dia)+"/"+dfzero.format(mes)+"/"+ano;
+    }
+    public Integer getDia(){
+        return dia;
+    }
+    public Integer getMes(){
+        return mes;
+    }
+    public Integer getAno(){
+        return ano;
     }
 }
