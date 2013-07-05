@@ -1,16 +1,5 @@
 package banco;
 
-class Empresa {
-    Funcionario[] empregados = new Funcionario[10];
-    String cnpj;
-    Integer totalFuncionarios = 0;
-    
-    void adiciona(Funcionario f){
-        this.empregados[totalFuncionarios] = new Funcionario(f);
-        totalFuncionarios++;
-    }
-}
-
 public class Programa_funcionario2 {
     public static void main (String[] args){
         Departamento departamentoA = new Departamento("A",10.);

@@ -8,7 +8,7 @@ public class Funcionario {
    private Data data_entrada = new Data();
    private Double salario;
    private DecimalFormat dfn = new DecimalFormat("#,##0.00;(#,##0.00)");
-          
+   
    public Funcionario (Funcionario f){
        this.nome = f.getNome();
        this.departamento = f.getDepartamento();
