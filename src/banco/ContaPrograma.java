@@ -2,10 +2,11 @@ package banco;
 
 public class ContaPrograma {
     public static void main(String[] args) {
-        Conta conta1 = new Conta("Conta1", 1, 0., 100.);
-        Conta conta2 = new Conta("Conta2", 2, 0., 100.);
-        boolean sucesso;
-
+        System.out.println("Contas:" + Conta.getContadorInstancias());
+        Conta conta1 = new Conta("Conta1", 1, 0., 100., 15, 1, 2013);
+        System.out.println("Contas:" + Conta.getContadorInstancias());
+        Conta conta2 = new Conta("Conta2", 2, 0., 0., 20, 05, 2013);
+        System.out.println("Contas:" + Conta.getContadorInstancias());
         System.out.println("-----------------------------------------");
         conta1.mostraConta();
         conta2.mostraConta();
