@@ -3,13 +3,24 @@ package banco;
 public class Empresa {
 
     Funcionario[] empregados = new Funcionario[10];
-    String cnpj;
-    Integer totalFuncionarios = 0;
+    private String cnpj;
+    private Integer totalFuncionarios = 0;
 
     void adiciona(Funcionario f) {
         //this.empregados[totalFuncionarios] = new Funcionario(f);
         this.empregados[totalFuncionarios] = f;
         totalFuncionarios++;
+    }
+
+    public String getCnpj() {
+        return this.cnpj;
+    }
+    public Integer getTotalFuncionarios() {
+        return totalFuncionarios;
+    }
+
+    void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     boolean eh_funcionario(Funcionario f) {
@@ -31,7 +42,6 @@ public class Empresa {
         for (Funcionario funcionarios : empregados) {
             if (funcionarios != null) {
                 valorTotalFolha += funcionarios.getSalario();
-//                System.out.println(valorTotalFolha);
             }
         }
         return valorTotalFolha;

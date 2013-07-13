@@ -15,11 +15,13 @@ public class Programa_funcionario2 {
 
         Empresa empresa = new Empresa();
         empresa.empregados = new Funcionario[10];
+
         /*
          for (int i = 3; i < 10; i++) {
             funcionario[i] = new Funcionario("teste" + i, departamentoB, "123456", 1000. + (15 * i), 5, 1, 2013);
         }
          */
+
         for (Funcionario f : funcionario) {
             if (f != null) {
                 empresa.adiciona(f);
@@ -35,6 +37,8 @@ public class Programa_funcionario2 {
         }
         System.out.println("");
         System.out.println("Folha Mensal:" + empresa.obtemTotalFolhaMensal());
-        System.out.println("Total de Funcionarios:" + empresa.totalFuncionarios);
+        System.out.println("Total de Funcionarios:" + empresa.getTotalFuncionarios());
+
+//        funcionario[5].
     }
 }
