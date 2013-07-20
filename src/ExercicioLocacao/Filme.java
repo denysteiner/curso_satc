@@ -1,11 +1,11 @@
 package ExercicioLocacao;
 
-public class Filmes {
+public class Filme {
    private String titulo;
-   private Integer genero;
-   private Integer categoria;
+    private Genero genero;
+    private Categoria categoria;
    
-   public Filmes (String titulo, Integer genero, Integer categoria) {
+    public Filme(String titulo, Genero genero, Categoria categoria) {
 	   this.titulo = titulo;
 	   this.genero = genero;
 	   this.categoria = categoria;
@@ -15,11 +15,11 @@ public class Filmes {
         return titulo;
     }
 
-    public String getGenero() {
-        return Genero.getGenero(genero);
+    public Genero getGenero() {
+        return genero;
     }
 
-    public Integer getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 }

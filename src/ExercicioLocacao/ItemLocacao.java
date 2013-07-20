@@ -1,32 +1,43 @@
 package ExercicioLocacao;
 
+import java.text.DecimalFormat;
+
 public class ItemLocacao {
-   private Filmes filmes;
-   private String numeroSerie;
-   private Integer tipoMidia;
+    private Filme filme;
+    private String numeroSerie;
+    private TipoMidia tipoMidia;
    
-   public ItemLocacao(String numeroSerie, Filmes filmes, Integer tipoMidia) {
+    public ItemLocacao(String numeroSerie, Filme filmes, TipoMidia tipoMidia) {
 	   this.numeroSerie = numeroSerie;
-	   this.filmes = filmes;
+        this.filme = filmes;
 	   this.tipoMidia = tipoMidia;
     }
 
-    public Filmes getFilmes() {
-        return filmes;
+    public Filme getFilmes() {
+        return filme;
     }
 
-    public Integer getTipoMidia() {
+    public TipoMidia getTipoMidia() {
         return tipoMidia;
     }
     public Double getValor() {
         Double valor;
-        valor = TipoMidia.getValor(tipoMidia);
-        valor = valor + (Categoria.getAcrescimo(filmes.getCategoria()) / 100 * valor);
+        valor = tipoMidia.getValor();
+        valor = (filme.getCategoria().getAcrescimo(valor));
         return valor;
     }
 
     public Integer getPrazo() {
-        return Categoria.getPrazoDevolucao(filmes.getCategoria());
+        return filme.getCategoria().getPrazoDevolucao();
     }
-   
+    
+    public String getInfo(){
+       DecimalFormat df = new DecimalFormat("#,##0.00;(#,##0.00)");
+       StringBuilder sb = new StringBuilder("");
+       sb.append("Titulo: ").append(this.getFilmes().getTitulo());
+       sb.append(" - Genero: ").append(this.getFilmes().getGenero().getDescricao());
+       sb.append(" - Valor: ").append(df.format(this.getValor()));
+       sb.append(" - Entregar em ").append(this.getPrazo()).append(" dia(s)").append("\n");
+       return sb.toString();
+    }
 }

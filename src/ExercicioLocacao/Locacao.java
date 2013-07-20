@@ -1,43 +1,44 @@
 package ExercicioLocacao;
 
+import java.text.DecimalFormat;
+
 public class Locacao {
-    private Clientes cliente;
+    private Cliente cliente;
     private ItemLocacao[] itens = new ItemLocacao[20];
+    private Integer totalItens = 0;
     
-    public Locacao(Clientes cliente) {
+    public Locacao(Cliente cliente) {
         this.cliente = cliente;
     }
 
-    public void AdicionaItem(ItemLocacao item, Integer posicao) {
-        this.itens[posicao] = item;
+    public void adicionaItem(ItemLocacao item) {
+        this.itens[totalItens] = item;
+        totalItens++;
     }
 
-    public void mostraLocacao() {
+    public Double getValorTotalLocacao() {
         Double total = 0.;
+        for (ItemLocacao item : itens) {
+            if (item != null) {
+                total += item.getValor();
+            }
+        }
+        return total;
+    }
+    
+    public void mostraLocacao() {
+        DecimalFormat df = new DecimalFormat("#,##0.00;(#,##0.00)");
         StringBuilder sb = new StringBuilder("");
         sb.append("============== Locação ==============\n");
         sb.append("Cliente: ").append(cliente.getNome()).append("\n");
         sb.append("Itens").append("\n");
         for (ItemLocacao item : itens) {
             if (item != null) {
-                sb.append("Titulo: ").append(item.getFilmes().getTitulo());
-                sb.append(" - Genero: ").append(item.getFilmes().getGenero());
-                sb.append(" - Valor: ").append(item.getValor());
-                sb.append(" - Entregar em ").append(item.getPrazo()).append(" dia(s)").append("\n");
-                total += item.getValor();
+                sb.append(item.getInfo());
             }
         }
-        sb.append("Valor Total Locação ====> ").append(total).append("\n");
+        sb.append("Valor Total Locação ====> ").append(df.format(this.getValorTotalLocacao())).append("\n");
         System.out.println(sb);
-
-
-        //
-                /*                          ============== Locação ==============
-                 Cliente: Klaus
-                 Itens	
-                 Titulo: O Corvo Genero: Terror Valor: 2.5 Entregar em 3 dia(s)
-                 Titulo: Homem de Ferro 3 Genero: Ação Valor: 3.75 Entregar em 1 dia(s)
-                 Valor Total Locação ====> 6.25
-                 */
+        
     }
 }

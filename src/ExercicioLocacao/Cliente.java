@@ -1,9 +1,9 @@
 package ExercicioLocacao;
 
-public class Clientes {
+public class Cliente {
    private String nome;
    
-   public Clientes(String nome) {
+   public Cliente(String nome) {
 	   this.nome = nome;
     }
 

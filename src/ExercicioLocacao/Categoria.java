@@ -1,21 +1,29 @@
 package ExercicioLocacao;
 
 public class Categoria {
-   private static String[] categoria = {"Catálogo", "Lançamento", "Super lançamentos"};
-   private static Double[] acrescimo = {0.0, 25.0, 50.0};
-   private static Integer[] prazoDevolucao = {3, 2, 1};
-   
-   public static String getCategoria(Integer posicao) {
-	   return categoria[posicao];
+    private String descricao;
+    private Double acrescimo;
+    private Integer prazoDevolucao;
+
+    public Categoria(String descricao, Integer prazoDevolucao, Double acrescimo) {
+        this.descricao = descricao;
+        this.acrescimo = acrescimo;
+        this.prazoDevolucao = prazoDevolucao;
     }
 
-    public static Double getAcrescimo(/*Double valor, */Integer categoria) {
-        //return valor + (acrescimo[categoria] / 100 * valor);
-        return acrescimo[categoria];
+    public Categoria(String descricao, Integer prazoDevolucao) {
+        this(descricao, prazoDevolucao, 0.);
     }
 
-    public static Integer getPrazoDevolucao(Integer categoria) {
-        return prazoDevolucao[categoria];
+    public String getDescricao() {
+        return this.descricao;
     }
-   
+
+    public Double getAcrescimo(Double valor) {
+        return valor + (acrescimo / 100 * valor);
+    }
+
+    public Integer getPrazoDevolucao() {
+        return prazoDevolucao;
+    }
 }

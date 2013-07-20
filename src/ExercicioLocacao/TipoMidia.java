@@ -1,14 +1,18 @@
 package ExercicioLocacao;
 
 public class TipoMidia {
-   private static String[] tipoMidia = {"DVD","VHS","BlueRay"};
-   private static Double[] valor = {2.50, 2.50, 3.50};
+    private String descricao;
+   private Double valor;
 
-   public static String getMidia(Integer midia) {
-	   return tipoMidia[midia];
+    public TipoMidia(String descricao, Double valor) {
+        this.descricao = descricao;
+        this.valor = valor;
+    }
+    public String getDescricao() {
+        return this.descricao;
     }
 
-    public static Double getValor(Integer posicao) {
-        return valor[posicao];
+    public Double getValor() {
+        return this.valor;
     }
 }
