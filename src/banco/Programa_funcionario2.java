@@ -1,5 +1,8 @@
 package banco;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Programa_funcionario2 {
 
     public static void main(String[] args) {
@@ -16,6 +19,8 @@ public class Programa_funcionario2 {
         Empresa empresa = new Empresa();
         empresa.empregados = new Funcionario[10];
 
+
+
         /*
          for (int i = 3; i < 10; i++) {
             funcionario[i] = new Funcionario("teste" + i, departamentoB, "123456", 1000. + (15 * i), 5, 1, 2013);
@@ -25,20 +30,19 @@ public class Programa_funcionario2 {
         for (Funcionario f : funcionario) {
             if (f != null) {
                 empresa.adiciona(f);
-                System.out.println("Adicionou:" + f.getNome());
+//                System.out.println("Adicionou:" + f.getNome());
             }
         }
 
-        empresa.listaFuncionarios();
+        empresa.getListaFuncionarios();
 
         funcionario[5] = new Funcionario("funcionario5", departamentoB, "123456", 1000., 5, 1, 2013);
         for (int i = 0; i < funcionario.length; i++) {
             System.out.print(i + "-" + empresa.eh_funcionario(funcionario[i]) + " ");
         }
         System.out.println("");
-        System.out.println("Folha Mensal:" + empresa.obtemTotalFolhaMensal());
+        System.out.println("Folha Mensal:" + empresa.getTotalFolhaMensal());
         System.out.println("Total de Funcionarios:" + empresa.getTotalFuncionarios());
 
-//        funcionario[5].
     }
 }

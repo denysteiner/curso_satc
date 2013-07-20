@@ -37,7 +37,7 @@ public class Empresa {
         return false;
     }
 
-    double obtemTotalFolhaMensal() {
+    double getTotalFolhaMensal() {
         Double valorTotalFolha = 0.;
         for (Funcionario funcionarios : empregados) {
             if (funcionarios != null) {
@@ -47,7 +47,7 @@ public class Empresa {
         return valorTotalFolha;
     }
 
-    void listaFuncionarios() {
+    void getListaFuncionarios() {
         for (Funcionario funcionarios : empregados) {
             if (funcionarios != null) {
                 funcionarios.mostra();

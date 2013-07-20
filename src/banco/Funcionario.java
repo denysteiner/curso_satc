@@ -1,6 +1,8 @@
 package banco;
 
 import java.text.DecimalFormat;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Funcionario {
 
@@ -37,11 +39,11 @@ public class Funcionario {
         return departamento;
     }
 
-    void recebeAumento(Double valor) {
+    void setRecebeAumento(Double valor) {
         salario += valor;
     }
 
-    Double calculaGanhoAnual() {
+    Double getGanhoAnual() {
         return salario * 12;
     }
 
