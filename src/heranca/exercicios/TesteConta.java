@@ -12,9 +12,9 @@ public class TesteConta {
         c.atualiza(0.01);
         cc.atualiza(0.01);
         cp.atualiza(0.01);
-        System.out.println(c.getSaldo());
-        System.out.println(cc.getSaldo());
-        System.out.println(cp.getSaldo());
+//        System.out.println(c.getSaldo());
+//        System.out.println(cc.getSaldo());
+//        System.out.println(cp.getSaldo());
 
         Conta c1 = new Conta();
         Conta cc1 = new ContaCorrente();
@@ -26,9 +26,9 @@ public class TesteConta {
         c1.atualiza(0.01);
         cc1.atualiza(0.01);
         cp1.atualiza(0.01);
-        System.out.println(c1.getSaldo());
-        System.out.println(cc1.getSaldo());
-        System.out.println(cp1.getSaldo());
+//        System.out.println(c1.getSaldo());
+//        System.out.println(cc1.getSaldo());
+//        System.out.println(cp1.getSaldo());
         
         AtualizadorDeContas adc = new AtualizadorDeContas(0.01);
         adc.roda(c);
@@ -53,6 +53,9 @@ public class TesteConta {
         for(int i=0;i<banco.pegaTotalDeContas();i++){
             adc1.roda(banco.pegaConta(i));
         }
+        System.out.println("SaldoTotal:"+adc1.getSaldoTotal());
+  
+//        CAST
         
     }
 }
