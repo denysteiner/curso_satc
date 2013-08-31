@@ -1,4 +1,9 @@
-package TesteInterface;
+package Interface.exercicios;
+
+import TesteInterface.AreaCalculavel;
+import TesteInterface.Circulo;
+import TesteInterface.Quadrado;
+import TesteInterface.Retangulo;
 
 public class TesteInterface {
     public static void main(String[] args) {

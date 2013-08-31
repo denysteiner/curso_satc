@@ -1,6 +1,6 @@
 package heranca.exercicios;
 
-import TesteInterface.Tributavel;
+import Interface.exercicios.Tributavel;
 
 public class TestaTributavel {
     public static void main(String[] args) {
@@ -10,7 +10,7 @@ public class TestaTributavel {
         System.out.println(cc.getSaldo());
         Tributavel t = cc;
         System.out.println(t.calculaTributos());
-        //System.out.println(t.getSaldo());
+//        System.out.println(t.getSaldo());
     }
  
 }

@@ -1,6 +1,6 @@
 package heranca.exercicios;
 
-public class SegudoDeVida implements TesteInterface.Tributavel{
+public class SegudoDeVida implements Interface.exercicios.Tributavel{
 
     @Override
     public double calculaTributos() {

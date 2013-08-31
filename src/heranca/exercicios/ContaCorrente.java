@@ -1,6 +1,6 @@
 package heranca.exercicios;
 
-public class ContaCorrente extends Conta implements TesteInterface.Tributavel{
+public class ContaCorrente extends Conta implements Interface.exercicios.Tributavel{
     
     @Override
     public void atualiza(double taxa){
