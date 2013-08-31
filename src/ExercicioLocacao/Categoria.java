@@ -1,5 +1,6 @@
 package ExercicioLocacao;
 
+
 public class Categoria {
     private String descricao;
     private Double acrescimo;
