@@ -3,6 +3,7 @@ package br.com.empresa.banco;
 import br.com.empresa.banco.conta.ValorInvalidoException;
 import br.com.empresa.banco.conta.ContaCorrente;
 import br.com.empresa.banco.conta.Conta;
+import static java.lang.Math.*;
 
 public class TestaDeposita {
     public static void main(String[] args) {
@@ -17,6 +18,8 @@ public class TestaDeposita {
         } catch (ValorInvalidoException ex) {
             System.out.println(ex.getMessage());
         }
+        System.out.println(abs(-10));
+        
         
     }
 }

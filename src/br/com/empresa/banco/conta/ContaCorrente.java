@@ -1,6 +1,7 @@
 package br.com.empresa.banco.conta;
 
 public class ContaCorrente implements Conta {
+
     private double saldo;
     
     @Override
@@ -34,6 +35,27 @@ public class ContaCorrente implements Conta {
                 throw new ValorSaqueForaDoLimiteException(valor,this.getSaldo());
             }
         }
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ContaCorrente other = (ContaCorrente) obj;
+        if (Double.doubleToLongBits(this.saldo) != Double.doubleToLongBits(other.saldo)) {
+            return false;
+        }
+        return true;
     }
     
 }
