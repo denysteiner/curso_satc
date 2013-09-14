@@ -3,6 +3,15 @@ package br.com.empresa.banco.conta;
 public class ContaCorrente implements Conta {
 
     private double saldo;
+    protected int numero;
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
     
     @Override
     public void atualiza(double taxa){
