@@ -14,15 +14,26 @@ public class TestaLista {
     public static void main(String[] args) {
         ContatoDao dao = new ContatoDao();
         List<Contato> contatos = dao.getLista();
+        String quebralinha, quebrarlinha;
         
-        for(Contato contato: contatos){
-            System.out.println("---------------------------------");
-            System.out.println("ID:"+contato.getId());
-            System.out.println("Nome:"+contato.getNome());
-            System.out.println("Email:"+contato.getEmail());
-            System.out.println("Endereco:"+contato.getEndereco());
-            System.out.println("Data de Nascimento:"+contato.getDataNascimento().getTime());
+        quebrarlinha = "N";
+        
+        if (quebrarlinha.equals("S")) {
+            quebralinha = "\n";
+        } else {
+            quebralinha = " | ";
         }
+        for(Contato contato: contatos){
+            if (quebralinha.equals("\n")) {
+                System.out.println("---------------------------------");
+            }
+            System.out.print("ID:"+contato.getId()+quebralinha);
+            System.out.print("Nome:"+contato.getNome()+quebralinha);
+            System.out.print("Email:"+contato.getEmail()+quebralinha);
+            System.out.print("Endereco:"+contato.getEndereco()+quebralinha);
+            System.out.print("Data de Nascimento:"+contato.getDataNascimento().getTime()+"\n");
+        }
+        System.out.println("Ultimo Codigo:"+dao.ultimoCodigo());
     }
 }
 
