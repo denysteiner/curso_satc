@@ -28,7 +28,8 @@ public class ContatoDao {
     }
     
     public Long ultimoCodigo(){
-        String sql = "select max(id) as max_cd from app.contatos";
+//        String sql = "select max(id) as max_cd from app.contatos";
+        String sql = "select max(id) as max_cd from contatos";
         Long codigo = 0L;
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -43,7 +44,8 @@ public class ContatoDao {
     }
     
     public Long existeContato(Long id){
-        String sql = "select count(*) as cont from app.contatos where id = "+id;
+//        String sql = "select count(*) as cont from app.contatos where id = "+id;
+        String sql = "select count(*) as cont from contatos where id = "+id;
         Long cont = 0L;
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -54,52 +56,42 @@ public class ContatoDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+//        System.out.println("existeContato:"+cont);
         return cont;
     }
     
     public void adiciona(Contato contato){
-//        System.out.println("id:"+contato.getId()+" - "+existeContato(contato.getId()));
-        if (existeContato(contato.getId()).equals(0)){
-            String sql = "insert into app.contatos "+
-                    "(id,nome,email,endereco,dataNascimento) "+
-                    "values (?,?,?,?,?)";
+//        System.out.println("id:"+contato.getId()+" - existecontato:"+existeContato(contato.getId()));
+        if (existeContato(contato.getId()).equals(0L)){
+//            String sql = "insert into app.contatos (id,nome,email,endereco,dataNascimento) values (?,?,?,?,?)";
+//            String sql = "insert into contatos (id,nome,email,endereco,dataNascimento) values (?,?,?,?,?)";
+            String sql = "insert into contatos (nome,email,endereco,dataNascimento) values (?,?,?,?)";
+//            System.out.println("ins1");
             try {
                 PreparedStatement stmt = connection.prepareStatement(sql);
-                stmt.setLong(1,contato.getId());
-                stmt.setString(2,contato.getNome());
-                stmt.setString(3,contato.getEmail());
-                stmt.setString(4,contato.getEndereco());
-                stmt.setDate(5,new java.sql.Date(contato.getDataNascimento().getTimeInMillis()));
+//                stmt.setLong(1,contato.getId());
+                stmt.setString(1,contato.getNome());
+                stmt.setString(2,contato.getEmail());
+                stmt.setString(3,contato.getEndereco());
+                stmt.setDate(4,new java.sql.Date(contato.getDataNascimento().getTimeInMillis()));
                 stmt.execute();
                 stmt.close();
+//                System.out.println("Inerindo");
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
         } else {
+//            System.out.println("altera");
             altera(contato);
         }
     }
     
-    public Long maxCodigo() {
-        Long codigo = 0L;
-        try{
-            PreparedStatement stmt = connection.prepareStatement("select max(id) as cod from app.contatos");
-            ResultSet rs = stmt.executeQuery();
-            rs.next();
-            codigo = rs.getLong("cod");
-            rs.close();
-            stmt.close();
-        } catch (SQLException e){
-            System.out.println("erro");
-            throw new RuntimeException(e);
-        }
-        return codigo;
-    }
-    
+
     public List<Contato> getLista(){
         try {
             List <Contato> contatos = new ArrayList<>();
-            PreparedStatement stmt = this.connection.prepareStatement("select * from app.contatos");
+//            PreparedStatement stmt = this.connection.prepareStatement("select * from app.contatos");
+            PreparedStatement stmt = this.connection.prepareStatement("select * from contatos");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
               Calendar data = Calendar.getInstance();
@@ -120,7 +112,8 @@ public class ContatoDao {
     }
     
     public void altera(Contato contato){
-        String sql = "update app.contatos set nome=?, email=?, endereco=?, datanascimento=? where id =?";
+//        String sql = "update app.contatos set nome=?, email=?, endereco=?, datanascimento=? where id =?";
+        String sql = "update contatos set nome=?, email=?, endereco=?, datanascimento=? where id =?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1,contato.getNome());
@@ -135,11 +128,12 @@ public class ContatoDao {
         }
     }
     
-    public void remove(Contato contato){
-        String sql = "delete from app.contatos where id =?";
+    public void remove(Long id){
+//        String sql = "delete from app.contatos where id =?";
+        String sql = "delete from contatos where id =?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setLong(1,contato.getId());
+            stmt.setLong(1,id);
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
@@ -149,7 +143,9 @@ public class ContatoDao {
     
     public Contato getContato(Long id) {
         String sql;
-        sql = "select id, nome, email, endereco, datanascimento from app.contatos where id="+id;
+//        sql = "select id, nome, email, endereco, datanascimento from app.contatos where id="+id;
+        sql = "select id, nome, email, endereco, datanascimento from contatos where id="+id;
+//        System.out.println(sql);
         Contato retContato;
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -174,10 +170,14 @@ public class ContatoDao {
     public Long getContato(Long id,String pos) {
         String sql="";
         Long retId;
-        if (pos.equals(">")){sql = "select min(id) as cd from app.contatos where id > "+id;}
-        if (pos.equals("<")){sql = "select max(id) as cd from app.contatos where id < "+id;}
-        if (pos.equals("<<")){sql = "select min(id) as cd from app.contatos";}
-        if (pos.equals(">>")){sql = "select max(id) as cd from app.contatos";}
+//        if (pos.equals(">")){sql = "select min(id) as cd from app.contatos where id > "+id;}
+//        if (pos.equals("<")){sql = "select max(id) as cd from app.contatos where id < "+id;}
+//        if (pos.equals("<<")){sql = "select min(id) as cd from app.contatos";}
+//        if (pos.equals(">>")){sql = "select max(id) as cd from app.contatos";}
+        if (pos.equals(">")){sql = "select min(id) as cd from contatos where id > "+id;}
+        if (pos.equals("<")){sql = "select max(id) as cd from contatos where id < "+id;}
+        if (pos.equals("<<")){sql = "select min(id) as cd from contatos";}
+        if (pos.equals(">>")){sql = "select max(id) as cd from contatos";}
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
