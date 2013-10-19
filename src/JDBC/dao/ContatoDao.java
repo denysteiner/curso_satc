@@ -42,21 +42,41 @@ public class ContatoDao {
         return codigo;
     }
     
-    public void adiciona(Contato contato){
-        String sql = "insert into app.contatos "+
-                "(id,nome,email,endereco,dataNascimento) "+
-                "values (?,?,?,?,?)";
+    public Long existeContato(Long id){
+        String sql = "select count(*) as cont from app.contatos where id = "+id;
+        Long cont = 0L;
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setLong(1,contato.getId());
-            stmt.setString(2,contato.getNome());
-            stmt.setString(3,contato.getEmail());
-            stmt.setString(4,contato.getEndereco());
-            stmt.setDate(5,new java.sql.Date(contato.getDataNascimento().getTimeInMillis()));
-            stmt.execute();
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            cont = rs.getLong("cont");
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+        return cont;
+    }
+    
+    public void adiciona(Contato contato){
+//        System.out.println("id:"+contato.getId()+" - "+existeContato(contato.getId()));
+        if (existeContato(contato.getId()).equals(0)){
+            String sql = "insert into app.contatos "+
+                    "(id,nome,email,endereco,dataNascimento) "+
+                    "values (?,?,?,?,?)";
+            try {
+                PreparedStatement stmt = connection.prepareStatement(sql);
+                stmt.setLong(1,contato.getId());
+                stmt.setString(2,contato.getNome());
+                stmt.setString(3,contato.getEmail());
+                stmt.setString(4,contato.getEndereco());
+                stmt.setDate(5,new java.sql.Date(contato.getDataNascimento().getTimeInMillis()));
+                stmt.execute();
+                stmt.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            altera(contato);
         }
     }
     
@@ -106,8 +126,8 @@ public class ContatoDao {
             stmt.setString(1,contato.getNome());
             stmt.setString(2,contato.getEmail());
             stmt.setString(3,contato.getEndereco());
-            stmt.setDate(4,(java.sql.Date) new Date(contato.getDataNascimento().getTimeInMillis()));
-            stmt.setLong(6,contato.getId());
+            stmt.setDate(4,new java.sql.Date(contato.getDataNascimento().getTimeInMillis()));
+            stmt.setLong(5,contato.getId());
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
@@ -126,4 +146,50 @@ public class ContatoDao {
             throw new RuntimeException(e);
         }
     }
+    
+    public Contato getContato(Long id) {
+        String sql;
+        sql = "select id, nome, email, endereco, datanascimento from app.contatos where id="+id;
+        Contato retContato;
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            Calendar data = Calendar.getInstance();
+            data.setTime(rs.getDate("dataNascimento"));
+            retContato = new Contato(rs.getLong("id"),
+                                    rs.getString("nome"),
+                                    rs.getString("email"),
+                                    rs.getString("endereco"),
+                                    data);
+            rs.close();
+            stmt.close();
+        } catch (SQLException e){
+            System.out.println("erro");
+            throw new RuntimeException(e);
+        }
+        return retContato;
+    }
+    
+    public Long getContato(Long id,String pos) {
+        String sql="";
+        Long retId;
+        if (pos.equals(">")){sql = "select min(id) as cd from app.contatos where id > "+id;}
+        if (pos.equals("<")){sql = "select max(id) as cd from app.contatos where id < "+id;}
+        if (pos.equals("<<")){sql = "select min(id) as cd from app.contatos";}
+        if (pos.equals(">>")){sql = "select max(id) as cd from app.contatos";}
+        try{
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            retId = rs.getLong("cd");
+            rs.close();
+            stmt.close();
+        } catch (SQLException e){
+            System.out.println("erro");
+            throw new RuntimeException(e);
+        }
+        return retId;
+    }
+    
 }
