@@ -64,4 +64,10 @@ public class Contato {
     public Calendar getDataNascimento() {
         return dataNascimento;
     }
+
+    @Override
+    public String toString() {
+        return "Contato{" + "nome=" + nome + ", email=" + email + ", endereco=" + endereco + ", dataNascimento=" + dataNascimento + ", id=" + id + '}';
+    }
+    
 }

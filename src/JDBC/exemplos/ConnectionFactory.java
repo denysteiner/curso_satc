@@ -10,14 +10,16 @@ import java.sql.SQLException;
  */
 
 public class ConnectionFactory {
+    private Connection con;
+    
     public Connection getConnection() {
         try {
-            return DriverManager.getConnection(
-                    "jdbc:derby://localhost:1527/contato;", "user", "user");
-//            return DriverManager.getConnection(
-//                    "jdbc:derby:C:\\Java\\BancoDeDadosNetBeans\\banco", "usuario", "senhausuario");
-//            return DriverManager.getConnection(
-//                    "jdbc:odbc:teste", "dba", "sql");
+            if (con==null) {
+//                con = DriverManager.getConnection("jdbc:derby:C:\\Java\\BancoDeDadosNetBeans\\banco", "usuario", "senhausuario");
+                con = DriverManager.getConnection("jdbc:derby://localhost:1527/contato;", "user", "user");
+//                con = DriverManager.getConnection("jdbc:odbc:teste", "dba", "sql");
+            }
+            return con;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
