@@ -128,7 +128,7 @@ public class ContatoDao {
     
     public Contato getContato(Long id) {
         String sql;
-        sql = "select id, nome, email, endereco, datanascimento from contatos where id="+id;
+        sql = "select id, nome, email, endereco, isnull(datanascimento,today()) as datanascimento from contatos where id="+id;
         Contato retContato;
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);

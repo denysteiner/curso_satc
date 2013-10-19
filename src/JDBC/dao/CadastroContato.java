@@ -11,7 +11,8 @@ import java.util.Calendar;
  * @author deny
  */
 public class CadastroContato extends javax.swing.JFrame {
-
+    public ContatoDao contatoDao = new ContatoDao();
+    
     /**
      * Creates new form CadastroContato
      */
@@ -189,15 +190,13 @@ public class CadastroContato extends javax.swing.JFrame {
                                       jemail.getText(),
                                       jendereco.getText(),
                                       Calendar.getInstance());
-        ContatoDao dao = new ContatoDao();
-        dao.adiciona(contato);
+        contatoDao.adiciona(contato);
 //        System.out.println("passou");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         Long codigo;
-        ContatoDao contatoDao = new ContatoDao();
         codigo = contatoDao.ultimoCodigo()+1;
         jid.setText(codigo.toString());
         jnome.setText("");
@@ -209,7 +208,6 @@ public class CadastroContato extends javax.swing.JFrame {
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        ContatoDao contatoDao = new ContatoDao();
         Contato contato;
         Long id;
         if (jid.getText().equals("")){
@@ -226,7 +224,6 @@ public class CadastroContato extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        ContatoDao contatoDao = new ContatoDao();
         Contato contato;
         Long id;
         if (jid.getText().equals("")){
@@ -244,7 +241,6 @@ public class CadastroContato extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        ContatoDao contatoDao = new ContatoDao();
         Contato contato;
         contato = contatoDao.getContato(contatoDao.getContato(0L,"<<"));
         atualizaCampos(contato);
@@ -252,7 +248,6 @@ public class CadastroContato extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        ContatoDao contatoDao = new ContatoDao();
         Contato contato;
         contato = contatoDao.getContato(contatoDao.getContato(0L,">>"));
         atualizaCampos(contato);
@@ -260,7 +255,6 @@ public class CadastroContato extends javax.swing.JFrame {
 
     private void jButton_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_excluirActionPerformed
         // TODO add your handling code here:
-        ContatoDao contatoDao = new ContatoDao();
         Long id;
         if (jid.getText().equals("")){
             id = 0L;

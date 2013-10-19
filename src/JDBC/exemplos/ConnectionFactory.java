@@ -16,8 +16,8 @@ public class ConnectionFactory {
         try {
             if (con==null) {
 //                con = DriverManager.getConnection("jdbc:derby:C:\\Java\\BancoDeDadosNetBeans\\banco", "usuario", "senhausuario");
-                con = DriverManager.getConnection("jdbc:derby://localhost:1527/contato;", "user", "user");
-//                con = DriverManager.getConnection("jdbc:odbc:teste", "dba", "sql");
+//                con = DriverManager.getConnection("jdbc:derby://localhost:1527/contato;", "user", "user");
+                con = DriverManager.getConnection("jdbc:odbc:teste", "dba", "sql");
             }
             return con;
         } catch (SQLException e) {
