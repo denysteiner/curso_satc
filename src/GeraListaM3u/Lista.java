@@ -10,6 +10,6 @@ public class Lista {
      */
     public static void main(String[] args) {
 //        GeraLista.Lista("D:\\apagar");
-        GeraListaTodasPastas.Lista("G:\\Music\\mp3");
+        GeraListaTodasPastas.Lista("D:\\mp3\\disco_E\\MP3_JaCopiado\\Nova pasta (2)\\InformationSociety");
     }
 }
