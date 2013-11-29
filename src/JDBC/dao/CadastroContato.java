@@ -11,7 +11,7 @@ import java.util.Calendar;
  * @author deny
  */
 public class CadastroContato extends javax.swing.JFrame {
-    public ContatoDao contatoDao = new ContatoDao();
+    public ContatoDAO contatoDao = new ContatoDAO();
     
     /**
      * Creates new form CadastroContato

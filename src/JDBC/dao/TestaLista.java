@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class TestaLista {
     public static void main(String[] args) {
-        ContatoDao dao = new ContatoDao();
+        ContatoDAO dao = new ContatoDAO();
         List<Contato> contatos = dao.getLista();
         String quebralinha, quebrarlinha;
         

@@ -17,7 +17,7 @@ public class Contato {
     private Calendar dataNascimento;
     private Long id;
 
-    Contato(Long id, String nome, String email, String endereco, Calendar dataNascimento){
+    public Contato(Long id, String nome, String email, String endereco, Calendar dataNascimento){
         setId(id);
         setNome(nome);
         setEmail(email);

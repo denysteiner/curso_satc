@@ -18,7 +18,7 @@ public class TestaInsere {
 //        Contato contato = new Contato(4L,"Pedro","pedro@gmail.com","R. rua 44",Calendar.getInstance());
         Contato contato = new Contato(5L,"Pedro","pedro@gmail.com","R. rua 44",Calendar.getInstance());
         
-        ContatoDao dao = new ContatoDao();
+        ContatoDAO dao = new ContatoDAO();
         dao.adiciona(contato);
         System.out.println("Gravado");
     }
