@@ -7,11 +7,6 @@ package CEP;
 /**
  *
  * @author deny - Otavio testando
- * @author deny - Otavio testando
- * @author deny - Otavio testando
- * @author deny - Otavio testando
- * @author deny - Otavio testando
- * @author deny - Otavio testando
  */
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -19,12 +14,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.SocketTimeoutException;
-
-//import org.jsoup.HttpStatusException;
-//import org.jsoup.Jsoup;
-//import org.jsoup.nodes.Document;
-//import org.jsoup.nodes.Element;
-//import org.jsoup.select.Elements;
 
 public class buscaCEP {
 
