@@ -6,7 +6,12 @@ package CEP;
 
 /**
  *
- * @author deny
+ * @author deny - Otavio testando
+ * @author deny - Otavio testando
+ * @author deny - Otavio testando
+ * @author deny - Otavio testando
+ * @author deny - Otavio testando
+ * @author deny - Otavio testando
  */
 import java.io.BufferedReader;
 import java.io.FileReader;
